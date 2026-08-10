@@ -25,6 +25,16 @@ type CoverageMetric = {
   videoCount: number;
 };
 
+type FeaturedGame = {
+  key: string;
+  title: string;
+  image: string;
+  href: string;
+  youtubeId: string;
+  kind: "playlist" | "video";
+  recent?: boolean;
+};
+
 const fallbackYouTubeVideos: YouTubeVideo[] = [
   {
     id: "UU0twAwhWIU",
@@ -56,55 +66,31 @@ const fallbackYouTubeVideos: YouTubeVideo[] = [
   },
 ];
 
-const featuredGames = [
+const featuredGames: FeaturedGame[] = [
   {
-    key: "beast-of-reincarnation",
-    title: "Beast of Reincarnation",
-    image: "/images/games/highlights/beast-of-reincarnation.jpg",
-    href: "https://www.youtube.com/playlist?list=PLYNOEBEkrN8I",
-    youtubeId: "PLYNOEBEkrN8I",
-    kind: "playlist" as const,
-  },
-  {
-    key: "atomic-heart",
-    title: "Atomic Heart",
-    image: "/images/games/highlights/atomic-heart.jpg",
-    href: "https://www.youtube.com/playlist?list=PLUcsTZleRG3o",
-    youtubeId: "PLUcsTZleRG3o",
-    kind: "playlist" as const,
-  },
-  {
-    key: "assassins-creed-black-flag-resynced",
-    title: "Assassin’s Creed Black Flag Resynced",
+    key: "indiana-jones-and-the-great-circle",
+    title: "Indiana Jones and the Great Circle",
     image:
-      "/images/games/highlights/assassins-creed-black-flag-resynced.jpg",
-    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aZp_9g2XAGQq5sDm3sPW-iJ",
-    youtubeId: "PL6ew14P2i0aZp_9g2XAGQq5sDm3sPW-iJ",
-    kind: "playlist" as const,
+      "/images/games/highlights/indiana-jones-and-the-great-circle.jpg",
+    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0abELxD7MCTd9X81iZ-4-qu2",
+    youtubeId: "PL6ew14P2i0abELxD7MCTd9X81iZ-4-qu2",
+    kind: "playlist",
   },
   {
-    key: "peter-jackson-king-kong",
-    title: "Peter Jackson’s King Kong",
-    image: "/images/games/highlights/peter-jackson-king-kong.jpg",
-    href: "https://www.youtube.com/playlist?list=PLMH2PtATjAPw",
-    youtubeId: "PLMH2PtATjAPw",
-    kind: "playlist" as const,
+    key: "stray",
+    title: "Stray",
+    image: "/images/games/highlights/stray.jpg",
+    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aaUAXyCLtVYuu4OdDGHrhAN",
+    youtubeId: "PL6ew14P2i0aaUAXyCLtVYuu4OdDGHrhAN",
+    kind: "playlist",
   },
   {
-    key: "halo-campaign-evolved",
-    title: "Halo: Campaign Evolved",
-    image: "/images/games/highlights/halo-campaign-evolved.jpg",
-    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aYAyTHcsGePd_XVlEpaiFKf",
-    youtubeId: "PL6ew14P2i0aYAyTHcsGePd_XVlEpaiFKf",
-    kind: "playlist" as const,
-  },
-  {
-    key: "mouse-pi-for-hire",
-    title: "Mouse: P.I. For Hire",
-    image: "/images/games/highlights/mouse-pi-for-hire.jpg",
-    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aZJKD204L27Gfk7Cu_R6cdF",
-    youtubeId: "PL6ew14P2i0aZJKD204L27Gfk7Cu_R6cdF",
-    kind: "playlist" as const,
+    key: "star-wars-jedi-survivor",
+    title: "Star Wars Jedi: Survivor",
+    image: "/images/games/highlights/star-wars-jedi-survivor.jpg",
+    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aYw3nRjhwihzgad7VYgu3GA",
+    youtubeId: "PL6ew14P2i0aYw3nRjhwihzgad7VYgu3GA",
+    kind: "playlist",
   },
   {
     key: "prince-of-persia-the-lost-crown",
@@ -112,32 +98,57 @@ const featuredGames = [
     image: "/images/games/highlights/prince-of-persia-the-lost-crown.jpg",
     href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aYdqOxJRDTWrOeeVyjOOYFk",
     youtubeId: "PL6ew14P2i0aYdqOxJRDTWrOeeVyjOOYFk",
-    kind: "playlist" as const,
+    kind: "playlist",
   },
   {
     key: "lego-batman-legacy-of-the-dark-knight",
     title: "LEGO Batman: Legacy of the Dark Knight",
     image:
       "/images/games/highlights/lego-batman-legacy-of-the-dark-knight.jpg",
-    href: "https://www.youtube.com/watch?v=Ltg5Y7zJoxA&t=1130s",
-    youtubeId: "Ltg5Y7zJoxA",
-    kind: "video" as const,
+    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aYFuLW0GWrc1aFFm941KjrN",
+    youtubeId: "PL6ew14P2i0aYFuLW0GWrc1aFFm941KjrN",
+    kind: "playlist",
   },
   {
-    key: "stray",
-    title: "Stray",
-    image: "/images/games/highlights/stray.jpg",
-    href: "https://www.youtube.com/watch?v=fTVz93WCXYw&t=9s",
-    youtubeId: "fTVz93WCXYw",
-    kind: "video" as const,
+    key: "pragmata",
+    title: "PRAGMATA",
+    image: "/images/games/highlights/pragmata.jpg",
+    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aZ9vyFdTGk1Xp0ZmPi8ctvi",
+    youtubeId: "PL6ew14P2i0aZ9vyFdTGk1Xp0ZmPi8ctvi",
+    kind: "playlist",
   },
   {
-    key: "star-wars-jedi-survivor",
-    title: "Star Wars Jedi: Survivor",
-    image: "/images/games/highlights/star-wars-jedi-survivor.jpg",
-    href: "https://www.youtube.com/watch?v=0hIV9DLbd2w",
-    youtubeId: "0hIV9DLbd2w",
-    kind: "video" as const,
+    key: "atomic-heart",
+    title: "Atomic Heart",
+    image: "/images/games/highlights/atomic-heart.jpg",
+    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0aZp_9g2XAGQq5sDm3sPW-iJ",
+    youtubeId: "PL6ew14P2i0aZp_9g2XAGQq5sDm3sPW-iJ",
+    kind: "playlist",
+  },
+  {
+    key: "assassins-creed-shadows",
+    title: "Assassin’s Creed Shadows",
+    image: "/images/games/highlights/assassins-creed-shadows.jpg",
+    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0abj4ZofMBi7JEpJ5Kry6Pqd",
+    youtubeId: "PL6ew14P2i0abj4ZofMBi7JEpJ5Kry6Pqd",
+    kind: "playlist",
+  },
+  {
+    key: "silent-hill-f",
+    title: "Silent Hill f",
+    image: "/images/games/highlights/silent-hill-f.jpg",
+    href: "https://www.youtube.com/playlist?list=PL6ew14P2i0abhTdbJskPMZb2ARv8PhFJ4",
+    youtubeId: "PL6ew14P2i0abhTdbJskPMZb2ARv8PhFJ4",
+    kind: "playlist",
+  },
+  {
+    key: "beast-of-reincarnation",
+    title: "Beast of Reincarnation",
+    image: "/images/games/highlights/beast-of-reincarnation.jpg",
+    href: "https://www.youtube.com/playlist?list=PLYNOEBEkrN8I",
+    youtubeId: "PLYNOEBEkrN8I",
+    kind: "playlist",
+    recent: true,
   },
 ];
 
@@ -283,10 +294,11 @@ const translations = {
       titleLine1: "JOGOS EM",
       titleLine2: "DESTAQUE.",
       description:
-        "Algumas das coberturas que mais se destacaram no KILL LIPE.",
+        "As 9 coberturas com maior alcance no KILL LIPE, acompanhadas da cobertura mais recente.",
       playlist: "VER PLAYLIST",
       video: "VER VÍDEO",
-      coverageViews: "VISUALIZAÇÕES NA COBERTURA",
+      coverageViews: "VISUALIZAÇÕES DO JOGO",
+      recentCoverage: "COBERTURA RECENTE",
       upcomingEyebrow: "Em breve no canal",
       upcomingTitle: "PRÓXIMAS COBERTURAS",
       upcomingDescription:
@@ -508,10 +520,11 @@ const translations = {
       titleLine1: "FEATURED",
       titleLine2: "GAMES.",
       description:
-        "A selection of standout KILL LIPE coverage.",
+        "The 9 highest-reach KILL LIPE game coverages, plus the most recent coverage.",
       playlist: "VIEW PLAYLIST",
       video: "VIEW VIDEO",
-      coverageViews: "COVERAGE VIEWS",
+      coverageViews: "GAME CONTENT VIEWS",
+      recentCoverage: "RECENT COVERAGE",
       upcomingEyebrow: "Coming to the channel",
       upcomingTitle: "UPCOMING COVERAGE",
       upcomingDescription:
@@ -734,10 +747,11 @@ const translations = {
       titleLine1: "JUEGOS",
       titleLine2: "DESTACADOS.",
       description:
-        "Algunas de las coberturas más destacadas de KILL LIPE.",
+        "Las 9 coberturas de juegos con mayor alcance de KILL LIPE, junto con la cobertura más reciente.",
       playlist: "VER PLAYLIST",
       video: "VER VIDEO",
-      coverageViews: "VISUALIZACIONES DE LA COBERTURA",
+      coverageViews: "VISUALIZACIONES DEL JUEGO",
+      recentCoverage: "COBERTURA RECIENTE",
       upcomingEyebrow: "Próximamente en el canal",
       upcomingTitle: "PRÓXIMAS COBERTURAS",
       upcomingDescription:
@@ -881,10 +895,9 @@ export default function KillLipeHome({ initialLocale }: KillLipeHomeProps) {
     youtubeVideos.length >= 4 ? youtubeVideos : fallbackYouTubeVideos;
   const latestVideo = displayVideos[0] ?? fallbackYouTubeVideos[0]!;
   const secondaryVideos = displayVideos.slice(1, 4);
-  const topCoverageMetrics = new Map(
+  const coverageMetricsMap = new Map(
     coverageMetrics
       .filter((coverage) => coverage.viewCount > 0)
-      .slice(0, 5)
       .map((coverage) => [coverage.key, coverage] as const)
   );
 
@@ -1652,7 +1665,7 @@ export default function KillLipeHome({ initialLocale }: KillLipeHomeProps) {
               {featuredGames.map((game) => {
                 const linkLabel =
                   game.kind === "playlist" ? t.games.playlist : t.games.video;
-                const coverageMetric = topCoverageMetrics.get(game.key);
+                const coverageMetric = coverageMetricsMap.get(game.key);
 
                 return (
                   <a
@@ -1687,15 +1700,23 @@ export default function KillLipeHome({ initialLocale }: KillLipeHomeProps) {
                     >
                       {game.title}
                     </h3>
-                    {coverageMetric && (
-                      <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                        <span className="text-[11px] font-bold tracking-[-0.01em] text-zinc-200 sm:text-xs">
-                          {formatCompactCount(coverageMetric.viewCount)}
-                        </span>
-                        <span className="text-[8px] font-semibold uppercase tracking-[0.1em] text-zinc-600 sm:text-[9px]">
-                          {t.games.coverageViews}
+                    {game.recent ? (
+                      <div className="mt-2">
+                        <span className="text-[8px] font-semibold uppercase tracking-[0.12em] text-zinc-500 sm:text-[9px]">
+                          {t.games.recentCoverage}
                         </span>
                       </div>
+                    ) : (
+                      coverageMetric && (
+                        <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                          <span className="text-[11px] font-bold tracking-[-0.01em] text-zinc-200 sm:text-xs">
+                            {formatCompactCount(coverageMetric.viewCount)}
+                          </span>
+                          <span className="text-[8px] font-semibold uppercase tracking-[0.1em] text-zinc-600 sm:text-[9px]">
+                            {t.games.coverageViews}
+                          </span>
+                        </div>
+                      )
                     )}
 
                     <span className="mt-2 inline-flex items-center gap-2 text-[9px] font-bold tracking-[0.12em] text-zinc-500 transition group-hover:text-zinc-300 sm:tracking-[0.14em]">
