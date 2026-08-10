@@ -297,7 +297,7 @@ const translations = {
         "As 9 coberturas com maior alcance no KILL LIPE, acompanhadas da cobertura mais recente.",
       playlist: "VER PLAYLIST",
       video: "VER VÍDEO",
-      coverageViews: "VISUALIZAÇÕES DO JOGO",
+      coverageViews: "VISUALIZAÇÕES DA COBERTURA",
       recentCoverage: "COBERTURA RECENTE",
       upcomingEyebrow: "Em breve no canal",
       upcomingTitle: "PRÓXIMAS COBERTURAS",
@@ -750,7 +750,7 @@ const translations = {
         "Las 9 coberturas de juegos con mayor alcance de KILL LIPE, junto con la cobertura más reciente.",
       playlist: "VER PLAYLIST",
       video: "VER VIDEO",
-      coverageViews: "VISUALIZACIONES DEL JUEGO",
+      coverageViews: "VISUALIZACIONES DE LA COBERTURA",
       recentCoverage: "COBERTURA RECIENTE",
       upcomingEyebrow: "Próximamente en el canal",
       upcomingTitle: "PRÓXIMAS COBERTURAS",
@@ -1702,7 +1702,7 @@ export default function KillLipeHome({ initialLocale }: KillLipeHomeProps) {
                     </h3>
                     {game.recent ? (
                       <div className="mt-2">
-                        <span className="text-[8px] font-semibold uppercase tracking-[0.12em] text-zinc-500 sm:text-[9px]">
+                        <span className="inline-flex items-center border border-white/15 bg-white/[0.04] px-2 py-1 text-[8px] font-bold uppercase tracking-[0.12em] text-zinc-300 sm:text-[9px]">
                           {t.games.recentCoverage}
                         </span>
                       </div>
